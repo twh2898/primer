@@ -19,7 +19,12 @@ int get_naturals(int* list, int len)
 
 int main(int argc, char** argv)
 {
-    int len = 5;
+    if (argc < 2 || argc > 2)
+    {
+        printf("Usage: %s <number of naturals>\n", argv[0]);
+        return 0;
+    }
+    int len = atoi(argv[1]);
     printf("Primer collecting %d numbers\n", len);
 
     int naturals[len];
