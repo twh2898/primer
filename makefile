@@ -5,7 +5,7 @@ CC=gcc
 all: build
 
 run:
-	./primer 5
+	./primer 10
 
 clean:
 	rm -rf *.o
