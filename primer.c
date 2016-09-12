@@ -17,17 +17,22 @@ int get_naturals(int* list, int len)
     return count;
 }
 
-int get_primes(int* list, int len, int* naturals, int nat_len)
+int get_primes(int* primes, int max_len, int* naturals, int nat_len)
 {
     int val = 2;
-    int i;
     int j = 0;
 
-    for (i = 0; i < len; i++)
+    int i = 0;
+    for (i = 0; i < max_len; i++)
     {
-        while (j < nat_len && val >= naturals[j])
+        if (j < nat_len && val >= naturals[j])
+        {
             j++;
-        list[i] = j++;
+            val++;
+        }
+        if (j >= nat_len)
+            break;
+        primes[i] = val++;
     }
 
     return i;
