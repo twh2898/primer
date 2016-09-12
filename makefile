@@ -1,16 +1,18 @@
 #!/bin/make
 
 CC=gcc
-CFLAGS=-Wall -std=gnu99
-OUTPUT=primer
 
 all: build
 
-clean:
-    rm -rf *.o
-    
-build: primer.o
-    $(CC) primer.o -o $(OUTPUT)
+run:
+	./primer
 
-primer.o:
-    $(CC) -c primer.c $(CFLAGS)
+clean:
+	rm -rf *.o
+
+debug:
+	$(CC) primer.c -g -o $(OUTPUT)
+	gdb primer
+
+build:
+	$(CC) primer.c -o primer $(CFLAGS)
