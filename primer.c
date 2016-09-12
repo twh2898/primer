@@ -9,12 +9,28 @@ int get_naturals(int* list, int len)
 
     while (count < len)
     {
-        for (j = 2; j < i; j++)
+        for (j = 2; j <= i; j++)
             list[count++] = i * j;
         i++;
     }
 
     return count;
+}
+
+int get_primes(int* list, int len, int* naturals, int nat_len)
+{
+    int val = 2;
+    int i;
+    int j = 0;
+
+    for (i = 0; i < len; i++)
+    {
+        while (j < nat_len && val >= naturals[j])
+            j++;
+        list[i] = j++;
+    }
+
+    return i;
 }
 
 int main(int argc, char** argv)
@@ -38,7 +54,15 @@ int main(int argc, char** argv)
         printf("\tNatural %d is %d\n", i, naturals[i]);
     }
 
-    printf("Cleaning Up\n");
+    printf("Collecting primes\n");
+    int primes[len];
+    int count = get_primes(&primes[0], len, &naturals[0], len);
+    for (i = 0; i < count; i++)
+    {
+        printf("\tPrime %d is %d\n", i, primes[i]);
+    }
+
+    printf("Done!");
 
     return 0;
 }
